@@ -5,7 +5,7 @@ body{
 }
 
 #global, .navp {
-    width: 1000px;
+    width: 60%;
     border: 2px solid black;
     margin: 0 auto;
     background-color: #26447F;
@@ -36,7 +36,7 @@ nav {
 nav ul {
     list-style-type: none;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
 }
@@ -47,7 +47,6 @@ nav ul li {
 }
 
 nav a {
-   
     padding: 20px;
     background:#181c22;
     border: 1px solid grey;
@@ -80,7 +79,7 @@ th, td {
 }
 
 form {
-    width: 800px;
+    width: 60%;
     margin: 0 auto;
     margin-top: 50px;
 
@@ -98,7 +97,7 @@ input[type="text"]{
 
 button{
     padding: 20px;
-    width: 30%;
+    width: 50%;
     background: #23282e;
     border: 0;
     box-sizing: border-box;
@@ -109,7 +108,7 @@ button{
 }
 
 footer {
-    width: 1000px;
+    width: 60%;
     border: 2px solid black;
     margin: 0 auto;
     background-color: #26447F;
@@ -118,4 +117,52 @@ footer {
 
 footer p {
     margin: 25px;
+}
+
+
+@media only screen and (max-width: 800px) {
+    body {
+        font-size: 0.7em;
+    }
+
+    #global, .navp, footer {
+        width: 100%;
+    }
+
+    nav:first-child {
+        height: 130px;
+        padding-bottom: 10px; 
+    }
+
+    nav ul {
+        flex-flow: column nowrap;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    nav ul li {
+        width: 50px;
+        font-size: 0.5em;
+    }
+
+    nav a {
+        padding: 5px;
+        width: 50px;
+    }
+
+    button{
+        padding: 20px;
+        width: 80%;
+        font-size: ;
+    }
+
+    .unmembre tr {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+    .unmembre tr:first-child {
+        display: none;
+    }
 }
