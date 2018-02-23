@@ -11,7 +11,32 @@
 	</ul>
 </nav>
 <div id="global">
-	<h1>Bienvenu sur le profil d'un membre!</h1>
+	<h1>Bienvenu sur la recherche de membres</h1>
+	<p>Entrez votre critère de recherche</p>
+	<form id="form_recherche" action="/profil/recherche" method="POST">
+		<input type="text" name="recherche" placeholder="Recherche">
+		<button type="submit">Rechercher</button>
+	</form>
+	<% if (membre != undefined){ %>
+	<table class="tableau">
+		<tr>
+			<th>_id</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Telephone</th>
+			<th>Courriel</th>
+		</tr>
+		<% for (var elm = 0; elm < membre.length; elm++){ %>
+		<tr>
+	 		<td><%= membre[elm]._id %></td>
+	 		<td><%= membre[elm].nom %></td>
+	 		<td><%= membre[elm].prenom %></td>
+	 		<td><%= membre[elm].telephone %></td>
+	 		<td><%= membre[elm].courriel %></td>
+		</tr>
+		<% } %>
+	</table>
+	<% } %>
 </div>
 </body>
 </html>

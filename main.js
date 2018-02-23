@@ -49,7 +49,7 @@ app.get('/membres', (req, res) => {
 app.get('/profil', (req, res) => {
 	let cursor = db.collection('adresses').find().toArray((err, resultat) => {
  		if (err) return console.log(err)
-  	res.render('profil.ejs', {adresses: resultat, direction: "asc"})
+  	res.render('profil.ejs', {adresses: resultat, direction: "asc", membre: undefined})
   })
 })
 
@@ -58,7 +58,7 @@ app.post('/ajouter', (req, res) => {
 	db.collection('adresses').save(req.body, (err, result) => {
 		if (err) return console.log(err)
 		console.log('sauvegarder dans la BD')
-		res.redirect('/')
+		res.redirect('/membres')
 	})
 })
 
@@ -69,7 +69,7 @@ app.get('/detruire/:id', (req, res) => {
 	console.log(critere)
 	db.collection('adresses').findOneAndDelete({"_id": critere}, (err, resultat) => {
 		if (err) return console.log(err)
-		res.redirect('/')
+		res.redirect('/membres')
 	})
 })
 
@@ -81,7 +81,7 @@ app.post('/modifier', (req, res) => {
 	db.collection('adresses').save(req.body, (err, result) => {
 		if (err) return console.log(err)
 		console.log('sauvegarder dans la BD')
-		res.redirect('/')
+		res.redirect('/membres')
 	})
 })
 
@@ -112,7 +112,7 @@ app.get('/peupler', (req, res) => {
 	db.collection('adresses').insert(peuple, (err, result) => {
 		if (err) return console.log(err)
 		console.log('sauvegarder dans la BD')
-		res.redirect('/')
+		res.redirect('/membres')
 	})
 })
 
@@ -122,6 +122,27 @@ app.get('/vider', (req, res) => {
 	db.collection('adresses').drop((err, result) => {
 		if (err) return console.log(err)
 		console.log('Liste de membres vidée')
-		res.redirect('/')
+		res.redirect('/membres')
 	})
+})
+
+/////////////////////////////////////////////////////Rechercher un membre
+app.post('/profil/recherche', (req, res) => {
+	console.log(req.body.recherche)
+	let recherche = req.body.recherche
+	let membreChercher = db.collection('adresses')
+		.find(
+			{$or:
+				[
+					{"_id": recherche},
+					{"nom": recherche},
+					{"prenom": recherche},
+					{"telephone": recherche},
+					{"courriel": recherche},
+				]
+			}).toArray((err, resultat) => {
+				if (err) return console.log(err)
+				console.log(resultat);
+				res.render('profil.ejs', {membre: resultat})
+			})
 })
