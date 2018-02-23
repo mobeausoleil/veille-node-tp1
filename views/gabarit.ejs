@@ -3,16 +3,21 @@
 <meta charset="utf-8">
 <%- include('composants/head') %>
 <body>
-<nav>
+<nav class="navp">
 	<ul>
-		<li><a href="#">Accueil</a></li>
-		<li><a href="#">Adresses</a></li>
-		<li><a href="http://localhost:8081/peupler">Peuplement</a></li>
-		<li><a href="http://localhost:8081/vider">Vider la liste</a></li>
+		<li><a href="http://localhost:8081">Accueil</a></li>
+		<li><a href="http://localhost:8081/membres">Liste des membres</a></li>
+		<li><a href="http://localhost:8081/profil">Profil d'un membre</a></li>
 	</ul>
 </nav>
 <%- include('composants/formulaire') %>
 <div id="global">
+	<nav>
+		<ul>
+			<li><a href="http://localhost:8081/peupler">Peuplement</a></li>
+			<li><a href="http://localhost:8081/vider">Vider la liste</a></li>
+		</ul>
+	</nav>
  <table class="tableau">
  	<% let noLigne = 0 %>
 	 <% for (elm of adresses) { %>

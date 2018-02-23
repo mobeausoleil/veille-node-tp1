@@ -4,11 +4,39 @@ body {
   color: #989898;
 }
 #global,
-nav {
+.navp {
   width: 1000px;
   border: 2px solid black;
   margin: 0 auto;
   background-color: #26447F;
+  color: white;
+}
+h1 {
+  font-size: 1.5em;
+}
+nav {
+  height: 80px;
+}
+nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+nav ul li {
+  margin-top: 10px;
+  width: 25%;
+}
+nav a {
+  padding: 20px;
+  background: #181c22;
+  border: 1px solid grey;
+  font-size: 20px;
+  color: white;
+}
+nav:last-child {
+  border: none;
 }
 a {
   color: white;
@@ -50,8 +78,4 @@ button {
   cursor: pointer;
   font-size: 20px;
   margin-bottom: 30px;
-}
-h1 {
-  margin-bottom: 0;
-  text-indent: -10000px;
 }

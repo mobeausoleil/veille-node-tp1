@@ -33,7 +33,23 @@ MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresses', (err, database)
 app.get('/', (req, res) => {
 	let cursor = db.collection('adresses').find().toArray((err, resultat) => {
  		if (err) return console.log(err)
+  	res.render('accueil.ejs', {adresses: resultat, direction: "asc"})
+  })
+})
+
+////////////////////////////////////////////////////Liste des membres
+app.get('/membres', (req, res) => {
+	let cursor = db.collection('adresses').find().toArray((err, resultat) => {
+ 		if (err) return console.log(err)
   	res.render('gabarit.ejs', {adresses: resultat, direction: "asc"})
+  })
+})
+
+////////////////////////////////////////////////////Liste des membres
+app.get('/profil', (req, res) => {
+	let cursor = db.collection('adresses').find().toArray((err, resultat) => {
+ 		if (err) return console.log(err)
+  	res.render('profil.ejs', {adresses: resultat, direction: "asc"})
   })
 })
 
