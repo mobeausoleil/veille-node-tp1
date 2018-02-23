@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<%- include('composants/head') %>
+<body>
+<%- include('composants/menu') %>
+<%- include('composants/formulaire') %>
+<div id="global">
+	<h1>Bienvenu sur le profil de <%= unmembre[0].prenom %> <%= unmembre[0].nom %></h1>
+	<table class="tableau">
+		<tr>
+			<th>_id</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Telephone</th>
+			<th>Courriel</th>
+		</tr>
+		<tr>
+			<% for (p in unmembre[0]) { %>
+	 			<td contenteditable='true'><%= unmembre[0][p] %></td>
+	 		<% } %>
+	 		<td><a class="sauver" href="#">Modifier </a></td>
+		</tr>
+	</table>
+</div>
+<%- include('composants/footer') %>
+<script type="text/javascript">
+	let elmSauver = document.querySelectorAll('.sauver')
+	for (elm of elmSauver){
+		elm.addEventListener('click', function(){
+			let laLigne = this.parentNode.parentNode
+			let id = laLigne.children[0].innerHTML
+			let nom = laLigne.children[1].innerHTML
+			let prenom = laLigne.children[2].innerHTML
+			let telephone = laLigne.children[3].innerHTML
+			let courriel = laLigne.children[4].innerHTML
+
+			let elmForm = document.getElementById('mon_formulaire')
+			let elmInput = elmForm.querySelectorAll('input')
+			elmInput[0].value = id
+			elmInput[1].value = nom
+			elmInput[2].value = prenom
+			elmInput[3].value = telephone
+			elmInput[4].value = courriel
+
+			elmForm.submit()
+		})
+	} 
+</script>
+</body>
+</html>

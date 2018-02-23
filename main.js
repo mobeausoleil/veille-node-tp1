@@ -45,7 +45,7 @@ app.get('/membres', (req, res) => {
   })
 })
 
-////////////////////////////////////////////////////Liste des membres
+////////////////////////////////////////////////////Page de recherche
 app.get('/profil', (req, res) => {
 	let cursor = db.collection('adresses').find().toArray((err, resultat) => {
  		if (err) return console.log(err)
@@ -75,13 +75,11 @@ app.get('/detruire/:id', (req, res) => {
 
 /////////////////////////////////////////////////////modifier
 app.post('/modifier', (req, res) => {
-
 	req.body._id = ObjectID(req.body._id)
-
 	db.collection('adresses').save(req.body, (err, result) => {
 		if (err) return console.log(err)
 		console.log('sauvegarder dans la BD')
-		res.redirect('/membres')
+		res.redirect('/profilmembre/'+req.body._id)
 	})
 })
 
@@ -89,7 +87,7 @@ app.post('/modifier', (req, res) => {
 app.get('/trier/:cle/:ordre', (req, res) => {
 	let cle = req.params.cle
 	let ordre = (req.params.ordre == 'asc' ? 1 : -1)
-	let cursor = db.collection('adresses').find().sort(cle,ordre).toArray(function(err, resultat){
+	let cursor = db.collection('adresses').find().sort(cle,ordre).toArray((err, resultat)=>{
 		ordre *= -1;
 		let direction = (ordre == 1 ? "asc" : "desc")
 		res.render('gabarit.ejs', {
@@ -126,11 +124,11 @@ app.get('/vider', (req, res) => {
 	})
 })
 
-/////////////////////////////////////////////////////Rechercher un membre
-app.post('/profil/recherche', (req, res) => {
+/////////////////////////////////////////////////////Rechercher des membres
+app.post('/profil/recherche/', (req, res) => {
 	console.log(req.body.recherche)
 	let recherche = req.body.recherche
-	let membreChercher = db.collection('adresses')
+	let membresChercher = db.collection('adresses')
 		.find(
 			{$or:
 				[
@@ -146,3 +144,13 @@ app.post('/profil/recherche', (req, res) => {
 				res.render('profil.ejs', {membre: resultat})
 			})
 })
+
+////////////////////////////////////////////////////Profil d'un membre
+app.get('/profilmembre/:id', (req, res) => {
+	let critere = ObjectID(req.params.id)
+	let cursor = db.collection('adresses').find({"_id": critere}).toArray((err, resultat) => {
+ 		if (err) return console.log(err)
+  	res.render('unmembre.ejs', {unmembre: resultat})
+  })
+})
+

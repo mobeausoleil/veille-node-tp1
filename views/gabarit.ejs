@@ -4,7 +4,6 @@
 <%- include('composants/head') %>
 <body>
 <%- include('composants/menu') %>
-<%- include('composants/formulaire') %>
 <div id="global">
 	<nav>
 		<ul>
@@ -20,45 +19,26 @@
 		 <tr>
 			 <% noLigne++
 			 for (p in elm ){ %>
-			 <th><a href='http://localhost:8081/trier/<%= p %>/<%= direction %>'><%= p %></a></th>
+				 <% if(p == "nom" || p == "prenom") { %>
+				 <th><a href='http://localhost:8081/trier/<%= p %>/<%= direction %>'><%= p %></a></th>
+				 <% } %>
 			 <% } %>
 		 </tr>
 	 <% } %>
 
 	 <tr>
 		 <% for (p in elm ){ %>
-		 <td contenteditable='true'><%= elm[p] %></td>
+		 	<% if(p == "nom" || p == "prenom") { %>
+		 	<td><%= elm[p] %></td>
+		 	<% } %>
 		 <% } %>
 		 <td><a href='/detruire/<%= elm._id %>'>Détruire </a></td>
-		 <td><a class="sauver" href="#">Modifier </a></td>
+		 <td><a href="/profilmembre/<%= elm._id %>">Profil </a></td>
 	 </tr>
 	 <% } %>
  </table>
  <%- include('composants/formulaire_ajout') %>
 </div>
- <script type="text/javascript">
-	let elmSauver = document.querySelectorAll('.sauver')
-	for (elm of elmSauver){
-		elm.addEventListener('click', function(){
-			let laLigne = this.parentNode.parentNode
-			let id = laLigne.children[0].innerHTML
-			let nom = laLigne.children[1].innerHTML
-			let prenom = laLigne.children[2].innerHTML
-			let telephone = laLigne.children[3].innerHTML
-			let courriel = laLigne.children[4].innerHTML
-
-			let elmForm = document.getElementById('mon_formulaire')
-			let elmInput = elmForm.querySelectorAll('input')
-			elmInput[0].value = id
-			elmInput[1].value = nom
-			elmInput[2].value = prenom
-			elmInput[3].value = telephone
-			elmInput[4].value = courriel
-
-			elmForm.submit()
-		})
-	} 
-</script>
 <%- include('composants/footer') %>
 </body>
 </html>

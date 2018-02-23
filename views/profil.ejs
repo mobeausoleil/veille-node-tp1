@@ -12,24 +12,28 @@
 		<button type="submit">Rechercher</button>
 	</form>
 	<% if (membre != undefined){ %>
-	<table class="tableau">
-		<tr>
-			<th>_id</th>
-			<th>Nom</th>
-			<th>Prenom</th>
-			<th>Telephone</th>
-			<th>Courriel</th>
-		</tr>
-		<% for (var elm = 0; elm < membre.length; elm++){ %>
-		<tr>
-	 		<td><%= membre[elm]._id %></td>
-	 		<td><%= membre[elm].nom %></td>
-	 		<td><%= membre[elm].prenom %></td>
-	 		<td><%= membre[elm].telephone %></td>
-	 		<td><%= membre[elm].courriel %></td>
-		</tr>
+		<% if (membre.length > 0) { %>
+		<table class="tableau">
+			<tr>
+				<th>_id</th>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Telephone</th>
+				<th>Courriel</th>
+			</tr>
+			<% for (var elm = 0; elm < membre.length; elm++){ %>
+			<tr>
+		 		<td><%= membre[elm]._id %></td>
+		 		<td><%= membre[elm].nom %></td>
+		 		<td><%= membre[elm].prenom %></td>
+		 		<td><%= membre[elm].telephone %></td>
+		 		<td><%= membre[elm].courriel %></td>
+			</tr>
+			<% } %>
+		</table>
+		<% } else { %>
+			<p>Aucun membre ne correspond à votre recherche</p>
 		<% } %>
-	</table>
 	<% } %>
 </div>
 <%- include('composants/footer') %>
