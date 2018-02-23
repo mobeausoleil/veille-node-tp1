@@ -1,7 +1,0 @@
-  {      
-     "nom" : "Martin",
-     "prenom" : "Eddy",
-     "telephone" : "514-123-9834",
-     "courriel" : "eddy@gmail.com",
-     "id": 1  
-   }
