@@ -1,0 +1,54 @@
+body {
+  background: #0d1521;
+  font-family: tahoma;
+  color: #989898;
+}
+#global {
+  width: 1000px;
+  border: 2px solid black;
+  margin: 0 auto;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+table {
+  border: 2px solid grey;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+th {
+  font-size: 1.5em;
+}
+th,
+td {
+  border: 0.5px solid grey;
+}
+form {
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 20px;
+  background: #181c22;
+  border: 1px solid grey;
+  font-size: 20px;
+  color: #989898;
+  margin-bottom: 5px;
+}
+button {
+  padding: 20px;
+  width: 30%;
+  background: #23282e;
+  border: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+}
+h1 {
+  margin-bottom: 0;
+  text-indent: -10000px;
+}
