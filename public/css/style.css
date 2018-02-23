@@ -16,6 +16,10 @@ h1 {
   text-align: center;
   margin: 25px;
 }
+h2 {
+  text-align: center;
+  text-decoration: underline;
+}
 p {
   text-align: center;
   margin: 100px;
