@@ -3,13 +3,7 @@
 <meta charset="utf-8">
 <%- include('composants/head') %>
 <body>
-<nav class="navp">
-	<ul>
-		<li><a href="http://localhost:8081">Accueil</a></li>
-		<li><a href="http://localhost:8081/membres">Liste des membres</a></li>
-		<li><a href="http://localhost:8081/profil">Profil d'un membre</a></li>
-	</ul>
-</nav>
+<%- include('composants/menu') %>
 <div id="global">
 	<h1>Bienvenu sur la recherche de membres</h1>
 	<p>Entrez votre critère de recherche</p>
@@ -38,5 +32,6 @@
 	</table>
 	<% } %>
 </div>
+<%- include('composants/footer') %>
 </body>
 </html>

@@ -3,13 +3,7 @@
 <meta charset="utf-8">
 <%- include('composants/head') %>
 <body>
-<nav class="navp">
-	<ul>
-		<li><a href="http://localhost:8081">Accueil</a></li>
-		<li><a href="http://localhost:8081/membres">Liste des membres</a></li>
-		<li><a href="http://localhost:8081/profil">Profil d'un membre</a></li>
-	</ul>
-</nav>
+<%- include('composants/menu') %>
 <%- include('composants/formulaire') %>
 <div id="global">
 	<nav>
@@ -65,5 +59,6 @@
 		})
 	} 
 </script>
+<%- include('composants/footer') %>
 </body>
 </html>
